@@ -7,8 +7,8 @@
   "use strict";
 
   const config = window.DSCC_CONFIG || {};
-  const SUPABASE_URL = "YOUR_SUPABASE_URL";
-  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+  const SUPABASE_URL = "https://syfenaufdocisegocips.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_tddERFeJrKRtS4SNEpOJYw_0VTK_EJr";
   const supabaseUrl = SUPABASE_URL !== "YOUR_SUPABASE_URL" ? SUPABASE_URL : config.supabaseUrl || "";
   const supabaseAnonKey = SUPABASE_ANON_KEY !== "YOUR_SUPABASE_ANON_KEY"
     ? SUPABASE_ANON_KEY
