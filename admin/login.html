@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Staff Sign In | D.S. Senanayake Central College, Mirigama</title>
+  <link rel="icon" href="../images/school-emblem-icon.png" type="image/png" sizes="96x96">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500..800&family=Marcellus&family=Noto+Sans+Sinhala:wght@400;600&family=Playfair+Display:ital,wght@1,400&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body login-body" data-admin-page="login">
+  <div class="login-bg-glow" aria-hidden="true"></div>
+
+  <main class="login-wrap" id="main">
+    <div class="login-card">
+      <div class="login-card-header">
+        <a class="brand" href="../index.html" aria-label="Back to the school website">
+          <div class="brand-crest-ring">
+            <img class="brand-crest" src="../images/school-emblem.webp" alt="Official D.S. Senanayake Central College emblem" width="56" height="62" decoding="async">
+          </div>
+          <div class="brand-text-wrap">
+            <span class="brand-line-1">D.S. Senanayake</span>
+            <span class="brand-line-2">Central College</span>
+            <span class="brand-line-3">Staff Administration</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="signin-form" novalidate>
+        <div class="form-title-row">
+          <h1>Login</h1>
+          <span class="auth-mode-pill" id="auth-mode-pill">Secure Login</span>
+        </div>
+        <p class="sub" id="login-description">For school administrators, principals, and academic editors. Sign-in requires an active staff account.</p>
+        
+        <div class="field">
+          <label for="email" id="login-identifier-label">Work Email</label>
+          <input id="email" name="email" type="text" autocomplete="username" placeholder="Enter username" required>
+        </div>
+        
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-login-submit" type="submit" id="btn-submit-login">
+          <span>Login</span>
+          <span class="arrow">→</span>
+        </button>
+      </form>
+
+      <p class="form-msg" id="login-msg" role="alert"></p>
+
+      <div class="login-card-footer">
+        <a class="back-link" href="../index.html">
+          <span>← Return to Public Website</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="../js/config.js" defer></script>
+  <script src="../js/supabase-config.js" defer></script>
+  <script src="../js/admin.js" defer></script>
+</body>
+</html>

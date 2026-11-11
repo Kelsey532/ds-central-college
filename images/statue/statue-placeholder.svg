@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" role="img" aria-label="Statue photo placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c4a3a"/>
+      <stop offset="1" stop-color="#0b2a20"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#g)"/>
+  <g fill="#0a1f18" stroke="#e0b53a" stroke-opacity=".5" stroke-width="2">
+    <circle cx="300" cy="190" r="62"/>
+    <path d="M200 700 L215 330 Q300 260 385 330 L400 700 Z"/>
+    <rect x="160" y="700" width="280" height="40" rx="4"/>
+  </g>
+  <text x="300" y="470" text-anchor="middle" fill="#e0b53a" font-family="Georgia,serif" font-size="22">[PLACEHOLDER]</text>
+  <text x="300" y="502" text-anchor="middle" fill="#ffffff" fill-opacity=".8" font-family="Georgia,serif" font-size="16">Add the real statue photo as</text>
+  <text x="300" y="526" text-anchor="middle" fill="#ffffff" fill-opacity=".8" font-family="Georgia,serif" font-size="16">images/statue/statue.png</text>
+</svg>

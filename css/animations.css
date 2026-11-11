@@ -1,0 +1,30 @@
+/* ==========================================================
+   Motion. Every rule here is disabled under prefers-reduced-motion.
+   One orchestrated hero load sequence + gentle scroll reveals.
+   ========================================================== */
+
+/* Initial state only applies when JS is running (html.js) so content is never hidden without it */
+.js .reveal { opacity: 0; transform: translateY(22px); will-change: transform, opacity; }
+.js .reveal.is-visible {
+  opacity: 1; transform: none;
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--delay, 0s);
+}
+
+/* Hero load sequence */
+.js .hero-copy > * { opacity: 0; transform: translateY(26px); will-change: transform, opacity; }
+.js.is-loaded .hero-copy > * { opacity: 1; transform: none; transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.js.is-loaded .hero-copy > :nth-child(1) { transition-delay: 0.15s; }
+.js.is-loaded .hero-copy > :nth-child(2) { transition-delay: 0.3s; }
+.js.is-loaded .hero-copy > :nth-child(3) { transition-delay: 0.5s; }
+.js.is-loaded .hero-copy > :nth-child(4) { transition-delay: 0.7s; }
+
+.scroll-cue { animation: cue 2.8s ease-in-out infinite; }
+@keyframes cue { 0%, 100% { transform: translate(-50%, 0); opacity: 0.7; } 50% { transform: translate(-50%, 6px); opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal, .js .hero-copy > * { opacity: 1 !important; transform: none !important; }
+  .scroll-cue { transform: translateX(-50%) !important; }
+}

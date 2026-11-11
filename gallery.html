@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | D.S. Senanayake Central College, Mirigama</title>
+  <meta name="description" content="Photos and approved videos from D.S. Senanayake Central College, Mirigama.">
+  <meta name="theme-color" content="#04140f">
+  <link rel="icon" href="images/school-emblem-icon.png" type="image/png" sizes="96x96">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500..800&family=Marcellus&family=Noto+Sans+Sinhala:wght@400;600&family=Playfair+Display:ital,wght@1,400&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="gallery">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="D.S. Senanayake Central College, home">
+        <span class="brand-emblem-frame">
+          <img class="brand-crest" src="images/school-emblem.webp" alt="Official D.S. Senanayake Central College emblem" width="76" height="76" decoding="async">
+        </span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <div class="brand-text-wrap">
+          <span class="brand-line-1">D.S. Senanayake Central College</span>
+          <span class="brand-line-2">(National School)</span>
+          <span class="brand-line-3">Mirigama</span>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><details class="nav-menu nav-menu--about">
+            <summary>About Us</summary>
+            <ul class="nav-sublist">
+              <li class="nav-subheading">History &amp; Traditions</li>
+              <li><a href="about.html#history">History</a></li>
+              <li><a href="about.html#history">Founders</a></li>
+              <li><a href="about.html#principal-message">Past Principals</a></li>
+              <li class="nav-subheading">Identity</li>
+              <li><a href="about.html#identity">School Profile</a></li>
+              <li><a href="about.html#vision">Vision &amp; Mission</a></li>
+              <li><a href="about.html#identity">School Song</a></li>
+              <li><a href="about.html#identity">Crest &amp; Motto</a></li>
+              <li><a href="about.html#identity">School Flag</a></li>
+              <li><a href="about.html#identity">School Colors</a></li>
+              <li><a href="about.html#identity">School Uniform</a></li>
+              <li><a href="about.html#identity">House System</a></li>
+              <li><a href="about.html#rules">Rules &amp; Regulations</a></li>
+            </ul>
+          </details></li>
+          <li><details class="nav-menu nav-menu--academics">
+            <summary>Academics</summary>
+            <ul class="nav-sublist">
+              <li class="nav-subheading">Curriculum</li>
+              <li><a href="academics.html#sections">Junior Secondary (Grade 6 - 9)</a></li>
+              <li><a href="academics.html#sections">Senior Secondary (Grade 10 - 11 / O/L)</a></li>
+              <li><a href="academics.html#sections">Advanced Level (Grade 12 - 13 / A/L)</a></li>
+              <li class="nav-subheading">Administration &amp; Staff</li>
+              <li><a href="academics.html">Management Structure</a></li>
+              <li><a href="about.html#principal-message">Principal</a></li>
+              <li><a href="academics.html">Deputy Principal</a></li>
+              <li><a href="academics.html">Academic Staff</a></li>
+              <li><a href="academics.html">Non-Academic Staff</a></li>
+              <li><a href="academics.html">Prefects Board</a></li>
+              <li><a href="academics.html#performance">Student Performance</a></li>
+            </ul>
+          </details></li>
+          <li><a href="contact.html#contact">Admissions</a></li>
+          <li><a href="activities.html#sports">Sports</a></li>
+          <li><a href="activities.html#clubs">Clubs &amp; Societies</a></li>
+          <li><a href="activities.html#achievements">Achievements</a></li>
+          <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+          <li><a href="contact.html#downloads">Downloads</a></li>
+          <li><a href="contact.html#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Gallery</h1>
+        <p class="lead">Photos and approved videos from school life.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar" id="gallery-filters" role="group" aria-label="Filter by category"></div>
+        <div class="gallery-grid" id="gallery-grid" aria-live="polite">
+          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Gallery photo]</span></div>
+          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Gallery photo]</span></div>
+          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Approved video]</span></div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Gallery viewer">
+      <button class="btn btn-ghost lightbox-close" type="button">Close</button>
+      <div class="lightbox-body"></div>
+    </dialog>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h2>D.S. Senanayake Central College</h2>
+          <p>Mirigama</p>
+          <p class="content-text" data-content-key="contact.address"><span class="placeholder-note">[PLACEHOLDER: Verified address]</span></p>
+        </div>
+        <nav aria-label="Footer">
+          <h2>Quick Navigation</h2>
+          <ul>
+            <li><a href="about.html#identity">School Profile</a></li>
+            <li><a href="about.html#principal-message">Principal's Message</a></li>
+            <li><a href="contact.html#contact">Admissions</a></li>
+            <li><a href="academics.html#performance">Student Performance</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="activities.html#achievements">Achievements</a></li>
+            <li><a href="activities.html#clubs">IT Club / Societies</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Useful external links">
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://e-thaksalawa.moe.gov.lk/" target="_blank" rel="noopener noreferrer">e-Thaksalawa</a></li>
+            <li><a href="https://www.edupub.gov.lk/" target="_blank" rel="noopener noreferrer">Textbooks &amp; Teacher's Guides</a></li>
+            <li><a href="https://www.moe.gov.lk/" target="_blank" rel="noopener noreferrer">Ministry of Education</a></li>
+            <li><a href="https://www.doenets.lk/" target="_blank" rel="noopener noreferrer">Examination Data Management Portal</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li data-content-key="contact.phone"><span class="placeholder-note">[PLACEHOLDER: Verified phone]</span></li>
+            <li data-content-key="contact.email"><span class="placeholder-note">[PLACEHOLDER: Verified email]</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year">2026</span> D.S. Senanayake Central College, Mirigama</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/animations.min.js" defer></script>
+  <script src="js/main.min.js" defer></script>
+  <script src="js/search.js" defer></script>
+</body>
+</html>

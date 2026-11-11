@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D.S. Senanayake Central College, Mirigama</title>
+  <meta name="description" content="Official website of D.S. Senanayake Central College, Mirigama. A Legacy of Knowledge, A Future of Excellence.">
+  <meta name="theme-color" content="#020b08">
+  <link rel="icon" href="images/school-emblem-icon.png" type="image/png" sizes="96x96">
+  <link rel="preload" as="image" href="images/hero-clean-bg.webp" fetchpriority="high">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500..800&family=Marcellus&family=Noto+Sans+Sinhala:wght@400;600&family=Playfair+Display:ital,wght@1,400&family=Plus+Jakarta+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="D.S. Senanayake Central College, home">
+        <span class="brand-emblem-frame">
+          <img class="brand-crest" src="images/school-emblem.webp" alt="Official D.S. Senanayake Central College emblem" width="76" height="76" decoding="async">
+        </span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <div class="brand-text-wrap">
+          <span class="brand-line-1">D.S. Senanayake Central College</span>
+          <span class="brand-line-2">(National School)</span>
+          <span class="brand-line-3">Mirigama</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span></button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><details class="nav-menu nav-menu--about">
+            <summary>About Us</summary>
+            <ul class="nav-sublist">
+              <li class="nav-subheading">History &amp; Traditions</li>
+              <li><a href="about.html#history">History</a></li>
+              <li><a href="about.html#history">Founders</a></li>
+              <li><a href="about.html#principal-message">Past Principals</a></li>
+              <li class="nav-subheading">Identity</li>
+              <li><a href="about.html#identity">School Profile</a></li>
+              <li><a href="about.html#vision">Vision &amp; Mission</a></li>
+              <li><a href="about.html#identity">School Song</a></li>
+              <li><a href="about.html#identity">Crest &amp; Motto</a></li>
+              <li><a href="about.html#identity">School Flag</a></li>
+              <li><a href="about.html#identity">School Colors</a></li>
+              <li><a href="about.html#identity">School Uniform</a></li>
+              <li><a href="about.html#identity">House System</a></li>
+              <li><a href="about.html#rules">Rules &amp; Regulations</a></li>
+            </ul>
+          </details></li>
+          <li><details class="nav-menu nav-menu--academics">
+            <summary>Academics</summary>
+            <ul class="nav-sublist">
+              <li class="nav-subheading">Curriculum</li>
+              <li><a href="academics.html#sections">Junior Secondary (Grade 6 - 9)</a></li>
+              <li><a href="academics.html#sections">Senior Secondary (Grade 10 - 11 / O/L)</a></li>
+              <li><a href="academics.html#sections">Advanced Level (Grade 12 - 13 / A/L)</a></li>
+              <li class="nav-subheading">Administration &amp; Staff</li>
+              <li><a href="academics.html">Management Structure</a></li>
+              <li><a href="about.html#principal-message">Principal</a></li>
+              <li><a href="academics.html">Deputy Principal</a></li>
+              <li><a href="academics.html">Academic Staff</a></li>
+              <li><a href="academics.html">Non-Academic Staff</a></li>
+              <li><a href="academics.html">Prefects Board</a></li>
+              <li><a href="academics.html#performance">Student Performance</a></li>
+            </ul>
+          </details></li>
+          <li><a href="contact.html#contact">Admissions</a></li>
+          <li><a href="activities.html#sports">Sports</a></li>
+          <li><a href="activities.html#clubs">Clubs &amp; Societies</a></li>
+          <li><a href="activities.html#achievements">Achievements</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html#downloads">Downloads</a></li>
+          <li><a href="contact.html#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Urgent Announcement Banner (driven by Admin Panel) -->
+  <aside class="site-notice-banner" id="site-notice-banner" role="alert">
+    <div class="site-notice-inner">
+      <div class="site-notice-content">
+        <span class="site-notice-tag" id="notice-tag">Notice</span>
+        <span class="site-notice-text" id="notice-text">Admissions are open for the 2026/2027 academic year. Visit administrative office for prospectuses.</span>
+      </div>
+      <button class="site-notice-close" id="notice-close" type="button" aria-label="Dismiss notice">&times;</button>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- ===== Hero (Cinematic Design with Statue) ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <canvas id="particles" aria-hidden="true"></canvas>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-welcome">Welcome to</p>
+          <h1 id="hero-title" class="hero-college-title">
+            <span class="hero-name">D.S. Senanayake</span>
+            <span class="hero-college">Central College</span>
+            <span class="hero-national">(National School)</span>
+            <span class="hero-location-line">
+              <span class="line-left"></span>
+              <span class="loc-text">MIRIGAMA</span>
+              <span class="line-right"></span>
+            </span>
+          </h1>
+          <p class="hero-subtitle">A Legacy of Knowledge, A Future of Excellence</p>
+          <p class="hero-lead">Guided by <em>Sunath • Dhareth • Charatha</em>, we inspire every generation through learning, discipline, and service.</p>
+          <div class="hero-actions">
+            <a class="btn-explore" href="about.html">Explore Our College <span class="arrow">→</span></a>
+            <button class="btn-video" id="play-journey-btn" type="button">
+              <span class="play-icon">▶</span>
+              <span>Watch Our Journey</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Bottom Scroll Cue -->
+      <div class="hero-scroll-cue-container">
+        <span class="hero-scroll-line"></span>
+        <a class="hero-scroll-pill" href="#stats" aria-label="Scroll down">
+          <span class="mouse-dot"></span>
+        </a>
+        <span class="hero-scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ===== Stats Strip ===== -->
+    <section class="college-stats-strip reveal" id="stats" aria-label="College Key Statistics">
+      <div class="container stats-strip-grid">
+        <div class="stat-box">
+          <strong>1947</strong>
+          <span>Founded with Honor</span>
+        </div>
+        <div class="stat-box">
+          <strong>3,500+</strong>
+          <span>Enrolled Students</span>
+        </div>
+        <div class="stat-box">
+          <strong>180+</strong>
+          <span>Qualified Faculty</span>
+        </div>
+        <div class="stat-box">
+          <strong>45+</strong>
+          <span>Clubs & Societies</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="values-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="motto-badge">Our purpose</p>
+          <h2 id="values-title">Vision &amp; Mission</h2>
+          <p>A shared direction for every learner and educator in our college.</p>
+        </div>
+        <div class="values-grid">
+          <article class="value-card reveal">
+            <h3>Our Vision</h3>
+            <p class="content-text" data-content-key="about.vision"><span class="placeholder-note">[PLACEHOLDER: Verified Vision statement]</span></p>
+          </article>
+          <article class="value-card reveal" style="--delay:.12s">
+            <h3>Our Mission</h3>
+            <p class="content-text" data-content-key="about.mission"><span class="placeholder-note">[PLACEHOLDER: Verified Mission statement]</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Introduction ===== -->
+    <section class="section" id="introduction" aria-labelledby="intro-title">
+      <div class="container intro-grid">
+        <div class="reveal">
+          <div class="motto-badge" style="margin-bottom:0.6rem;">Welcome to Excellence</div>
+          <h2 id="intro-title">A Proud Legacy of Character, Wisdom & National Service</h2>
+          <p>Founded in the historic educational hub of Mirigama, D.S. Senanayake Central College has flourished into one of the country's pre-eminent institutions. Inspired by the statesmanship and selflessness of Sri Lanka's Father of the Nation, our mission is to cultivate well-rounded global thinkers who hold fast to their traditional values.</p>
+          <p>Under our guiding principle <em>"Sunath • Dhareth • Charatha"</em> (Listen intently, Retain wisdom, Practice righteous conduct), students are nurtured through a rigorous academic curriculum, robust cadeting and sports programs, and transformative cultural leadership.</p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
+            <a class="btn btn-primary" href="about.html">Discover Our Story</a>
+            <a class="btn btn-ghost" href="academics.html">Academic Programs</a>
+          </div>
+        </div>
+        <div class="intro-media-card reveal" style="--delay:.12s; border-radius:18px; overflow:hidden; border:1px solid var(--line); box-shadow:0 25px 50px rgba(0,0,0,0.6); position:relative; aspect-ratio:4/3;">
+          <img src="images/school/main-hall.jpg" alt="D.S. Senanayake Central College Main Campus" width="800" height="600" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.92) contrast(1.05);">
+          <div style="position:absolute; bottom:0; inset-inline:0; padding:1.2rem; background:linear-gradient(0deg, rgba(2,11,8,0.92) 0%, transparent 100%);">
+            <span style="color:var(--gold); font-family:var(--font-brand); font-size:0.95rem; font-weight:600;">Main College Building & Assembly Hall</span>
+            <small style="display:block; color:var(--text-muted); font-size:0.85rem;">Central Campus, Mirigama</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Quick links ===== -->
+    <section class="section-alt" aria-label="Quick links">
+      <div class="container">
+        <ul class="quick-links reveal">
+          <li><a href="academics.html"><strong>Academics</strong><span>Science, Commerce, Arts & Tech</span></a></li>
+          <li><a href="activities.html"><strong>Activities</strong><span>Sports, Cadets, Bands & Clubs</span></a></li>
+          <li><a href="gallery.html"><strong>Gallery</strong><span>Campus Life & Memorable Events</span></a></li>
+          <li><a href="contact.html"><strong>Contact</strong><span>Find Us, Visit & Reach the Office</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Latest news ===== -->
+    <section class="section" id="news-section" aria-labelledby="news-title">
+      <div class="container">
+        <div class="section-head reveal" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem;">
+          <div>
+            <div class="motto-badge" style="margin-bottom:0.5rem;">Announcements & Press</div>
+            <h2 id="news-title" style="margin-bottom:0.2rem;">Latest News & College Updates</h2>
+            <p style="margin-bottom:0;">Stay informed with the latest happenings, academic calendars, and triumphs.</p>
+          </div>
+        </div>
+        <div class="news-list" id="news-list">
+          <article class="news-item reveal">
+            <time datetime="2026-03-24">24 March 2026</time>
+            <h3>Annual Inter-House Sports Championship 2026</h3>
+            <p>Athletes from Senanayake, Jayathilake, Gemunu, and Parakrama houses competed with fierce athletic prowess, with Senanayake House clinching the overall championship trophy.</p>
+          </article>
+          <article class="news-item reveal" style="--delay:.1s">
+            <time datetime="2026-03-15">15 March 2026</time>
+            <h3>Outstanding G.C.E. Advanced Level Academic Results</h3>
+            <p>Our students have once again achieved stellar performance in the Physical Science, Biological Science, Commerce, and Arts streams with record island-wide rankings.</p>
+          </article>
+          <article class="news-item reveal" style="--delay:.2s">
+            <time datetime="2026-03-02">02 March 2026</time>
+            <h3>National Cadeting Platoon Advances to All-Island Finals</h3>
+            <p>The College Cadet Platoon (6th NCC Battalion) demonstrated unparalleled discipline and precision drill at the Rantembe assessment camp, winning high commendations.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Featured activities ===== -->
+    <section class="section section-alt" aria-labelledby="act-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="motto-badge" style="margin-bottom:0.5rem;">Holistic Growth</div>
+          <h2 id="act-title">Life Beyond the Classroom</h2>
+          <p>From prestigious sports to leadership societies, our students shine on every arena.</p>
+        </div>
+        <div class="feature-grid">
+          <a class="feature-tile reveal" href="activities.html#sports" style="background-image:linear-gradient(0deg, rgba(2,11,8,0.9) 0%, rgba(2,11,8,0.2) 60%), url('images/gallery/gallery-1.jpg'); background-size:cover; background-position:center;">
+            <div>
+              <h3>First XI Cricket & Athletics</h3>
+              <small>Championship traditions and annual big matches</small>
+            </div>
+          </a>
+          <a class="feature-tile reveal" style="--delay:.1s; background-image:linear-gradient(0deg, rgba(2,11,8,0.9) 0%, rgba(2,11,8,0.2) 60%), url('images/gallery/gallery-2.jpg'); background-size:cover; background-position:center;" href="activities.html#cadets">
+            <div>
+              <h3>Cadeting, Scouting & Bands</h3>
+              <small>Building character, precision, and lifelong leadership</small>
+            </div>
+          </a>
+          <a class="feature-tile reveal" style="--delay:.2s; background-image:linear-gradient(0deg, rgba(2,11,8,0.9) 0%, rgba(2,11,8,0.2) 60%), url('images/gallery/gallery-3.jpg'); background-size:cover; background-position:center;" href="activities.html#clubs">
+            <div>
+              <h3>Science, ICT & Cultural Guilds</h3>
+              <small>Innovating for tomorrow and celebrating Sinhala heritage</small>
+            </div>
+          </a>
+        </div>
+        <p class="section-cta reveal"><a class="btn btn-ghost" href="activities.html">Explore All 45+ Activities →</a></p>
+      </div>
+    </section>
+
+    <!-- ===== Gallery preview ===== -->
+    <section class="section" aria-labelledby="gal-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="motto-badge" style="margin-bottom:0.5rem;">Visual Heritage</div>
+          <h2 id="gal-title">Captured College Moments</h2>
+          <p>A glimpse into celebrations, ceremonies, academic milestones, and sporting conquests.</p>
+        </div>
+        <div class="feature-grid">
+          <a class="feature-tile reveal" href="gallery.html" style="background-image:linear-gradient(0deg, rgba(2,11,8,0.85) 0%, transparent 60%), url('images/gallery/gallery-4.jpg'); background-size:cover; background-position:center;">
+            <div><h3>Annual Prize Giving</h3><small>Celebrating Academic Distinction</small></div>
+          </a>
+          <a class="feature-tile reveal" style="--delay:.1s; background-image:linear-gradient(0deg, rgba(2,11,8,0.85) 0%, transparent 60%), url('images/gallery/gallery-5.jpg'); background-size:cover; background-position:center;" href="gallery.html">
+            <div><h3>Founders' Day Assembly</h3><small>Honoring Hon. D. S. Senanayake</small></div>
+          </a>
+          <a class="feature-tile reveal" style="--delay:.2s; background-image:linear-gradient(0deg, rgba(2,11,8,0.85) 0%, transparent 60%), url('images/gallery/gallery-6.jpg'); background-size:cover; background-position:center;" href="gallery.html">
+            <div><h3>Cultural & Drama Festival</h3><small>Rich Performing Arts</small></div>
+          </a>
+        </div>
+        <p class="section-cta reveal"><a class="btn btn-primary" href="gallery.html">Open Full Media Gallery</a></p>
+      </div>
+    </section>
+
+    <!-- Journey Video Dialog -->
+    <dialog class="journey-dialog" id="journey-dialog" aria-label="School Journey Video">
+      <div class="journey-dialog-header">
+        <h3>D.S. Senanayake Central College — Our Journey</h3>
+        <button class="journey-close-btn" id="journey-close-btn" type="button" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="journey-dialog-body">
+        <div class="journey-video-wrap">
+          <iframe id="journey-iframe" data-src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="D.S. Senanayake Central College Journey" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="journey-desc">A glimpse into the rich history, proud traditions, academic excellence, and vibrant extracurricular life at D.S. Senanayake Central College, Mirigama.</p>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h2>D.S. Senanayake Central College</h2>
+          <p>Mirigama, Sri Lanka</p>
+          <p class="content-text" data-content-key="contact.address">Negombo - Kurunegala Road, Mirigama 11200, Western Province</p>
+        </div>
+        <nav aria-label="Footer">
+          <h2>Quick Navigation</h2>
+          <ul>
+            <li><a href="about.html#identity">School Profile</a></li>
+            <li><a href="about.html#principal-message">Principal's Message</a></li>
+            <li><a href="contact.html#contact">Admissions</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="academics.html#performance">Student Performance</a></li>
+            <li><a href="activities.html">Achievements</a></li>
+            <li><a href="activities.html#clubs">IT Club / Societies</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Useful external links">
+          <h2>Useful Links</h2>
+          <ul>
+            <li><a href="https://e-thaksalawa.moe.gov.lk/" target="_blank" rel="noopener noreferrer">e-Thaksalawa</a></li>
+            <li><a href="https://www.edupub.gov.lk/" target="_blank" rel="noopener noreferrer">Textbooks &amp; Teacher's Guides</a></li>
+            <li><a href="https://www.moe.gov.lk/" target="_blank" rel="noopener noreferrer">Ministry of Education</a></li>
+            <li><a href="https://www.doenets.lk/" target="_blank" rel="noopener noreferrer">Examination Data Management Portal</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li data-content-key="contact.phone">Tel: +94 33 227 3254 / +94 33 227 3420</li>
+            <li data-content-key="contact.email">Email: info@dssenanayake.sch.lk</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year">2026</span> D.S. Senanayake Central College, Mirigama. All rights reserved.</span>
+        <div style="display:flex; gap:1.5rem; align-items:center;">
+          <a href="contact.html">Campus Map</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/animations.min.js" defer></script>
+  <script src="js/main.min.js" defer></script>
+  <script src="js/statue.min.js" defer></script>
+  <script src="js/search.js" defer></script>
+</body>
+</html>
