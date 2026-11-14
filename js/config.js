@@ -6,7 +6,7 @@
  */
 window.DSCC_CONFIG = {
   supabaseUrl: "https://syfenaufdocisegocips.supabase.co",
-  supabaseAnonKey: "",  // [PLACEHOLDER: your Supabase anon (public) key]
+  supabaseAnonKey: "sb_publishable_tddERFeJrKRtS4SNEpOJYw_0VTK_EJr",
   statueImage: "images/statue/statue.webp",
   statueFallback: "images/statue/statue-placeholder.svg"
 };

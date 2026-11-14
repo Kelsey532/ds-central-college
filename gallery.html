@@ -70,7 +70,7 @@
               <li><a href="academics.html#performance">Student Performance</a></li>
             </ul>
           </details></li>
-          <li><a href="contact.html#contact">Admissions</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
           <li><a href="activities.html#sports">Sports</a></li>
           <li><a href="activities.html#clubs">Clubs &amp; Societies</a></li>
           <li><a href="activities.html#achievements">Achievements</a></li>
@@ -93,9 +93,7 @@
       <div class="container">
         <div class="filter-bar" id="gallery-filters" role="group" aria-label="Filter by category"></div>
         <div class="gallery-grid" id="gallery-grid" aria-live="polite">
-          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Gallery photo]</span></div>
-          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Gallery photo]</span></div>
-          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Approved video]</span></div>
+          <p class="empty-state">Loading gallery…</p>
         </div>
       </div>
     </section>
@@ -120,7 +118,7 @@
           <ul>
             <li><a href="about.html#identity">School Profile</a></li>
             <li><a href="about.html#principal-message">Principal's Message</a></li>
-            <li><a href="contact.html#contact">Admissions</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
             <li><a href="academics.html#performance">Student Performance</a></li>
             <li><a href="academics.html">Academics</a></li>
             <li><a href="activities.html#achievements">Achievements</a></li>
@@ -151,9 +149,11 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="js/config.js" defer></script>
+  <script src="js/supabase-config.js" defer></script>
   <script src="js/animations.min.js" defer></script>
-  <script src="js/main.min.js" defer></script>
+  <script src="js/main.js" defer></script>
   <script src="js/search.js" defer></script>
 </body>
 </html>

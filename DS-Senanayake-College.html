@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D.S. Senanayake Central College, Mirigama</title>
+  <meta name="description" content="Official website of D.S. Senanayake Central College, Mirigama.">
+  <meta name="theme-color" content="#04140f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2064%2064%22%20role=%22img%22%20aria-label=%22School%20logo%20placeholder%22%3E%0A%20%20%3Ccircle%20cx=%2232%22%20cy=%2232%22%20r=%2229%22%20fill=%22%230b2a20%22%20stroke=%22%23e0b53a%22%20stroke-width=%223%22/%3E%0A%20%20%3Ctext%20x=%2232%22%20y=%2239%22%20text-anchor=%22middle%22%20fill=%22%23e0b53a%22%20font-family=%22Georgia%2Cserif%22%20font-size=%2220%22%20font-weight=%22700%22%3EDS%3C/text%3E%0A%3C/svg%3E" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Sans+Sinhala:wght@400;600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* ==========================================================
+   D.S. Senanayake Central College, Mirigama - core styles
+   Shared by all public pages (admin.css reuses the same tokens)
+   ========================================================== */
+
+:root {
+  --emerald-900: #04140f;
+  --emerald-800: #072a1f;
+  --emerald-700: #0b3d2e;
+  --emerald-600: #115240;
+  --emerald-500: #1a6b55;
+  --gold: #e0b53a;
+  --gold-soft: #f1d27a;
+  --gold-deep: #b98a14;
+  --white: #ffffff;
+  --text: #f4f7f5;
+  --text-muted: #b7c9c0;
+  --line: rgba(224, 181, 58, 0.22);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+
+  --font-display: "Marcellus", "Noto Serif Sinhala", Georgia, serif;
+  --font-body: "Source Sans 3", "Noto Sans Sinhala", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 14px;
+  --container: 1180px;
+  --header-h: 76px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 78% -10%, rgba(26, 107, 85, 0.45), transparent 60%),
+    linear-gradient(180deg, var(--emerald-800) 0%, var(--emerald-900) 55%, #020b08 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; display: block; }
+a { color: var(--gold-soft); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--white); }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  letter-spacing: 0.01em;
+}
+h1 { font-size: clamp(2.4rem, 5.4vw, 4.4rem); }
+h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+h3 { font-size: 1.3rem; }
+p { margin: 0 0 1em; max-width: 68ch; }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container { width: min(100% - 2.5rem, var(--container)); margin-inline: auto; }
+
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem;
+  background: var(--gold); color: var(--emerald-900);
+  padding: 0.6rem 1rem; border-radius: 8px; z-index: 200; font-weight: 600;
+}
+.skip-link:focus { top: 1rem; }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- Header / navigation ---------- */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  height: var(--header-h);
+  display: flex; align-items: center;
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), backdrop-filter 0.4s;
+  border-bottom: 1px solid transparent;
+}
+.site-header.is-scrolled {
+  background: rgba(4, 20, 15, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+
+.brand { display: flex; align-items: center; gap: 0.75rem; color: var(--white); text-decoration: none; }
+.brand img { width: 46px; height: 46px; object-fit: contain; }
+.brand-text { font-family: var(--font-display); font-size: 1.05rem; line-height: 1.15; }
+.brand-text small { display: block; font-family: var(--font-body); font-size: 0.78rem; color: var(--text-muted); }
+
+.nav-list { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+.nav-list a {
+  display: block; padding: 0.55rem 0.9rem; border-radius: 999px;
+  color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.97rem;
+  transition: color 0.25s, background 0.25s;
+}
+.nav-list a:hover { background: var(--surface-hover); color: var(--gold-soft); }
+.nav-list a[aria-current="page"] { color: var(--gold); box-shadow: inset 0 -2px 0 var(--gold); border-radius: 0; }
+
+.nav-toggle {
+  display: none; background: none; border: 1px solid var(--line); color: var(--white);
+  width: 46px; height: 46px; border-radius: 12px; cursor: pointer;
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  display: block; width: 20px; height: 2px; background: currentColor; margin: auto; position: relative;
+  transition: transform 0.3s var(--ease), background 0.3s;
+}
+.nav-toggle span::before, .nav-toggle span::after { content: ""; position: absolute; left: 0; }
+.nav-toggle span::before { top: -6px; }
+.nav-toggle span::after { top: 6px; }
+.nav-toggle[aria-expanded="true"] span { background: transparent; }
+.nav-toggle[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.85rem 1.7rem; border-radius: 999px; font-weight: 600; font-size: 1rem;
+  text-decoration: none; cursor: pointer; border: 1.5px solid transparent;
+  transition: transform 0.3s var(--ease), background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.btn-primary { background: var(--gold); color: var(--emerald-900); box-shadow: 0 8px 30px rgba(224, 181, 58, 0.25); }
+.btn-primary:hover { background: var(--gold-soft); color: var(--emerald-900); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(224, 181, 58, 0.38); }
+.btn-ghost { border-color: var(--line); color: var(--white); background: transparent; }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold-soft); transform: translateY(-2px); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; min-height: 100vh; min-height: 100svh;
+  display: flex; align-items: center;
+  padding: calc(var(--header-h) + 2rem) 0 4rem;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: clamp(1.5rem, 5vw, 5rem);
+  position: relative; z-index: 2;
+}
+.hero-copy .school-line { color: var(--gold); font-size: 1.05rem; margin-bottom: 1rem; max-width: none; }
+.hero-copy h1 { margin-bottom: 0.4em; text-wrap: balance; }
+.hero-copy .tagline { font-size: 1.2rem; color: var(--text-muted); max-width: 46ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
+
+.statue-stage { position: relative; display: grid; place-items: center; perspective: 1100px; }
+.statue-card {
+  position: relative; width: min(100%, 440px); aspect-ratio: 4 / 5;
+  border-radius: 220px 220px 18px 18px;       /* quiet arch frame */
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--emerald-600), var(--emerald-900));
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 0 90px rgba(224, 181, 58, 0.14);
+}
+.statue-card img.statue-img {
+  position: absolute; inset: -4%; width: 108%; height: 108%; object-fit: cover; object-position: center top;
+  will-change: transform;
+}
+.statue-card::after {                           /* golden rim-light + vignette */
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(241, 210, 122, 0.45), inset 0 -80px 90px rgba(4, 20, 15, 0.7), inset 0 30px 80px rgba(224, 181, 58, 0.12);
+}
+.statue-sweep {                                 /* light sweep layer, animated in animations.css */
+  position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 238, 180, 0.28) 50%, transparent 62%);
+  transform: translateX(-120%); mix-blend-mode: screen;
+}
+.statue-glow {
+  position: absolute; width: 90%; aspect-ratio: 1; border-radius: 50%; z-index: -1;
+  background: radial-gradient(circle, rgba(224, 181, 58, 0.28), transparent 68%);
+  filter: blur(30px);
+}
+#particles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+.scroll-cue {
+  position: absolute; bottom: 1.6rem; left: 50%; transform: translateX(-50%); z-index: 2;
+  color: var(--text-muted); font-size: 0.85rem; text-decoration: none;
+}
+
+/* ---------- Sections ---------- */
+.section { padding: clamp(4rem, 9vw, 7.5rem) 0; position: relative; }
+.section-head { margin-bottom: 2.6rem; max-width: 62ch; }
+.section-head p { color: var(--text-muted); }
+.section-alt { background: linear-gradient(180deg, rgba(255,255,255,0.025), transparent); }
+
+.placeholder-note {
+  display: inline-block; padding: 0.15rem 0.6rem; border-radius: 6px;
+  background: rgba(224, 181, 58, 0.12); border: 1px dashed var(--gold-deep); color: var(--gold-soft);
+  font-size: 0.92rem;
+}
+
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.intro-media {
+  aspect-ratio: 4 / 3; border-radius: var(--radius); border: 1px dashed var(--line);
+  display: grid; place-items: center; text-align: center; padding: 1.5rem;
+  background: var(--surface); color: var(--text-muted);
+}
+
+/* Quick links - plain list with a gold rule, not a card grid */
+.quick-links { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+.quick-links li { border-right: 1px solid var(--line); }
+.quick-links li:last-child { border-right: 0; }
+.quick-links a {
+  display: block; padding: 2rem 1.5rem; text-decoration: none; color: var(--white);
+  transition: background 0.35s var(--ease);
+}
+.quick-links a:hover { background: var(--surface-hover); }
+.quick-links strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.35rem; margin-bottom: 0.35rem; }
+.quick-links span { color: var(--text-muted); font-size: 0.97rem; }
+.quick-links a:hover strong { color: var(--gold); }
+
+/* News */
+.news-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.news-item {
+  padding: 1.6rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 0.6rem;
+  transition: transform 0.35s var(--ease), border-color 0.35s, background 0.35s;
+}
+.news-item:hover { transform: translateY(-4px); border-color: var(--gold); background: var(--surface-hover); }
+.news-item time { color: var(--gold); font-size: 0.92rem; }
+.news-item h3 { margin: 0; }
+.news-item p { color: var(--text-muted); margin: 0; }
+
+/* Activities and gallery preview */
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.feature-tile {
+  position: relative; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--line); background: linear-gradient(135deg, var(--emerald-600), var(--emerald-800));
+  display: flex; align-items: flex-end; padding: 1.25rem; color: var(--white); text-decoration: none;
+  transition: transform 0.45s var(--ease), border-color 0.35s;
+}
+.feature-tile:hover { transform: translateY(-5px); border-color: var(--gold); color: var(--white); }
+.feature-tile h3 { margin: 0; font-size: 1.2rem; }
+.feature-tile small { display: block; color: var(--text-muted); font-family: var(--font-body); font-size: 0.9rem; margin-top: 0.2rem; }
+.feature-tile::before { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4,20,15,0.85), transparent 60%); }
+.feature-tile > * { position: relative; }
+.section-cta { margin-top: 2.2rem; }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid var(--line); padding: 3.5rem 0 2rem; background: rgba(2, 11, 8, 0.6); }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.5rem; }
+.footer-grid h2 { font-size: 1.15rem; margin-bottom: 0.8rem; color: var(--gold); }
+.footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+.footer-grid a { color: var(--text); text-decoration: none; }
+.footer-grid a:hover { color: var(--gold-soft); text-decoration: underline; }
+.footer-grid p, .footer-grid li { color: var(--text-muted); font-size: 0.98rem; }
+.footer-bottom { margin-top: 2.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--text-muted); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }
+.footer-bottom a { color: var(--text-muted); }
+
+/* ==========================================================
+   Inner pages (About, Academics, Activities, Gallery, Contact)
+   ========================================================== */
+.page-hero {
+  padding: calc(var(--header-h) + 4rem) 0 3rem;
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(900px 380px at 85% 0%, rgba(26, 107, 85, 0.35), transparent 70%);
+}
+.page-hero h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); margin-bottom: 0.3em; }
+.page-hero .lead { color: var(--text-muted); font-size: 1.15rem; max-width: 56ch; margin: 0; }
+
+.split { display: grid; grid-template-columns: 0.8fr 1.6fr; gap: clamp(1.5rem, 5vw, 5rem); align-items: start; }
+.split > h2 { margin: 0; position: sticky; top: calc(var(--header-h) + 1.5rem); }
+.split + .split { margin-top: clamp(3rem, 7vw, 5.5rem); padding-top: clamp(3rem, 7vw, 5.5rem); border-top: 1px solid var(--line); }
+.content-text { white-space: pre-line; }
+.prose p:last-child { margin-bottom: 0; }
+
+.portrait {
+  width: 180px; aspect-ratio: 4 / 5; border-radius: var(--radius); border: 1px dashed var(--line);
+  background: var(--surface); display: grid; place-items: center; text-align: center; padding: 0.75rem;
+  color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;
+}
+
+.group-block + .group-block { margin-top: 3rem; }
+.group-block > h2 { font-size: 1.6rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); margin-bottom: 1.4rem; }
+.activity-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+.activity-item {
+  padding: 1.4rem; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface);
+  transition: border-color 0.3s, background 0.3s, transform 0.35s var(--ease);
+}
+.activity-item:hover { border-color: var(--gold); background: var(--surface-hover); transform: translateY(-3px); }
+.activity-item h3 { margin-bottom: 0.3rem; }
+.activity-item time { color: var(--gold); font-size: 0.92rem; display: block; margin-bottom: 0.4rem; }
+.activity-item p { margin: 0; color: var(--text-muted); }
+
+.filter-bar { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+.filter-btn {
+  font: inherit; font-size: 0.97rem; color: var(--text); background: transparent; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 1.1rem;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+.filter-btn:hover { border-color: var(--gold); }
+.filter-btn[aria-pressed="true"] { background: var(--gold); color: var(--emerald-900); border-color: var(--gold); font-weight: 600; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+.gallery-tile {
+  position: relative; aspect-ratio: 4 / 3; padding: 0; border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; cursor: pointer; background: linear-gradient(135deg, var(--emerald-600), var(--emerald-800)); color: var(--white);
+  font: inherit; text-align: left;
+}
+.gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.gallery-tile:hover img { transform: scale(1.05); }
+.gallery-tile .cap {
+  position: absolute; inset: auto 0 0 0; padding: 2rem 0.9rem 0.7rem; font-size: 0.93rem;
+  background: linear-gradient(0deg, rgba(4,20,15,0.9), transparent);
+}
+.gallery-tile .badge {
+  position: absolute; top: 0.6rem; right: 0.6rem; background: var(--gold); color: var(--emerald-900);
+  font-size: 0.8rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 999px;
+}
+.gallery-tile.is-placeholder { cursor: default; display: grid; place-items: center; text-align: center; padding: 1rem; }
+
+dialog.lightbox {
+  width: min(94vw, 1000px); max-height: 92vh; padding: 0; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--emerald-900); color: var(--text); overflow: auto;
+}
+dialog.lightbox::backdrop { background: rgba(2, 11, 8, 0.88); }
+.lightbox-body { padding: 1rem; }
+.lightbox-body img { max-height: 76vh; width: auto; margin: 0 auto; border-radius: 8px; }
+.lightbox-body iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; }
+.lightbox-caption { padding: 0.75rem 0.25rem 0.25rem; color: var(--text-muted); }
+.lightbox-close { position: absolute; top: 0.6rem; right: 0.6rem; z-index: 2; }
+
+.empty-state { padding: 2rem; border: 1px dashed var(--line); border-radius: var(--radius); color: var(--text-muted); }
+
+.contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.detail-list { margin: 0; display: grid; gap: 1.6rem; }
+.detail-list dt { color: var(--gold); font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.25rem; }
+.detail-list dd { margin: 0; color: var(--text); }
+.map-frame { aspect-ratio: 4 / 3; border-radius: var(--radius); border: 1px solid var(--line); overflow: hidden; background: var(--surface); display: grid; place-items: center; text-align: center; padding: 1rem; }
+.map-frame iframe { width: 100%; height: 100%; border: 0; }
+
+@media (max-width: 900px) {
+  .split, .contact-layout { grid-template-columns: 1fr; }
+  .split > h2 { position: static; }
+}
+
+/* ==========================================================
+   Motion. Every rule here is disabled under prefers-reduced-motion.
+   One orchestrated hero load sequence + gentle scroll reveals.
+   ========================================================== */
+
+/* Initial state only applies when JS is running (html.js) so content is never hidden without it */
+.js .reveal { opacity: 0; transform: translateY(22px); }
+.js .reveal.is-visible {
+  opacity: 1; transform: none;
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  transition-delay: var(--delay, 0s);
+}
+
+/* Hero load sequence */
+.js .hero-copy > * { opacity: 0; transform: translateY(26px); }
+.js.is-loaded .hero-copy > * { opacity: 1; transform: none; transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.js.is-loaded .hero-copy > :nth-child(1) { transition-delay: 0.15s; }
+.js.is-loaded .hero-copy > :nth-child(2) { transition-delay: 0.3s; }
+.js.is-loaded .hero-copy > :nth-child(3) { transition-delay: 0.5s; }
+.js.is-loaded .hero-copy > :nth-child(4) { transition-delay: 0.7s; }
+
+.js .statue-card { opacity: 0; clip-path: inset(100% 0 0 0); }
+.js.is-loaded .statue-card {
+  opacity: 1; clip-path: inset(0 0 0 0);
+  transition: opacity 1.2s var(--ease) 0.2s, clip-path 1.6s var(--ease) 0.2s;
+}
+.js.is-loaded .statue-card.is-interactive { transition: none; }  /* hand control to pointer tilt after intro */
+
+/* Soft light sweep every few seconds */
+.js.is-loaded .statue-sweep { animation: sweep 9s ease-in-out 2.4s infinite; }
+@keyframes sweep {
+  0%, 62% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+/* Slow glow breathing */
+.statue-glow { animation: breathe 7s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { opacity: 0.75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+
+.scroll-cue { animation: cue 2.8s ease-in-out infinite; }
+@keyframes cue { 0%, 100% { transform: translate(-50%, 0); opacity: 0.7; } 50% { transform: translate(-50%, 6px); opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal, .js .hero-copy > *, .js .statue-card { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .scroll-cue { transform: translateX(-50%) !important; }
+}
+
+/* ==========================================================
+   Responsive rules: tablet <= 1024px, mobile <= 720px
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; text-align: left; }
+  .statue-stage { order: -1; width: 100%; max-width: 360px; margin-inline: auto; }
+  .hero { padding-top: calc(var(--header-h) + 1rem); }
+  .quick-links { grid-template-columns: repeat(2, 1fr); }
+  .quick-links li:nth-child(2) { border-right: 0; }
+  .quick-links li:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .news-list, .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .intro-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid > :first-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-grid; place-items: center; }
+  .primary-nav {
+    position: fixed; inset: var(--header-h) 0 auto 0;
+    background: rgba(4, 20, 15, 0.97); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 1.25rem 1.5rem;
+    transform: translateY(-110%); visibility: hidden;
+    transition: transform 0.45s var(--ease), visibility 0s 0.45s;
+  }
+  .primary-nav.is-open { transform: none; visibility: visible; transition: transform 0.45s var(--ease); }
+  .nav-list { flex-direction: column; gap: 0; }
+  .nav-list a { padding: 1rem 0.5rem; border-bottom: 1px solid var(--line); border-radius: 0; font-size: 1.1rem; }
+  .nav-list a[aria-current="page"] { box-shadow: none; }
+}
+
+@media (max-width: 720px) {
+  body { font-size: 1rem; }
+  .container { width: min(100% - 2rem, var(--container)); }
+  .brand-text small { display: none; }
+  .news-list, .feature-grid { grid-template-columns: 1fr; }
+  .quick-links { grid-template-columns: 1fr; }
+  .quick-links li { border-right: 0; border-bottom: 1px solid var(--line); }
+  .quick-links li:last-child { border-bottom: 0; }
+  .statue-stage { max-width: 290px; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .scroll-cue { display: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* single-file additions */
+.route-page[hidden] { display: none; }
+[tabindex="-1"]:focus { outline: none; }
+
+  </style>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="D.S. Senanayake Central College, home">
+        <img src="images/school-emblem.png" alt="Official D.S. Senanayake Central College emblem" width="46" height="46">
+        <span class="brand-text">D.S. Senanayake Central College<small>Mirigama</small></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span></button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="route-page" data-route="home" hidden>
+
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="particles" aria-hidden="true"></canvas>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="school-line">Mirigama</p>
+          <h1 id="hero-title">D.S. Senanayake Central College</h1>
+          <p class="tagline"><span class="placeholder-note">[PLACEHOLDER: Official school motto or tagline]</span></p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#about">Discover our school</a>
+            <a class="btn btn-ghost" href="#contact">Contact us</a>
+          </div>
+        </div>
+
+        <div class="statue-stage">
+          <div class="statue-glow" aria-hidden="true"></div>
+          <div class="statue-card">
+            <img class="statue-img" src="images/statue/statue.png" alt="The statue of D.S. Senanayake at the school" width="880" height="1100" fetchpriority="high">
+            <div class="statue-sweep" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#introduction">Scroll</a>
+    </section>
+
+    <!-- ===== Introduction ===== -->
+    <section class="section" id="introduction" aria-labelledby="intro-title">
+      <div class="container intro-grid">
+        <div class="reveal">
+          <h2 id="intro-title">Welcome to our school</h2>
+          <p><span class="placeholder-note">[PLACEHOLDER: Verified school introduction text]</span></p>
+          <a class="btn btn-ghost" href="#about">Read our story</a>
+        </div>
+        <div class="intro-media reveal" style="--delay:.12s">
+          <p><span class="placeholder-note">[PLACEHOLDER: School photo, images/school/]</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Quick links ===== -->
+    <section class="section-alt" aria-label="Quick links">
+      <div class="container">
+        <ul class="quick-links reveal">
+          <li><a href="#academics"><strong>Academics</strong><span>Subjects and programmes</span></a></li>
+          <li><a href="#activities"><strong>Activities</strong><span>Sports, clubs and societies</span></a></li>
+          <li><a href="#gallery"><strong>Gallery</strong><span>Photos and videos</span></a></li>
+          <li><a href="#contact"><strong>Contact</strong><span>Find and reach the school</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Latest news ===== -->
+    <section class="section" aria-labelledby="news-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="news-title">Latest news and announcements</h2>
+        </div>
+        <div class="news-list" id="news-list">
+          <p class="empty-state">Loading latest news…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Featured activities ===== -->
+    <section class="section section-alt" aria-labelledby="act-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="act-title">Life beyond the classroom</h2>
+          <p>Featured activities will be chosen by the school in the admin dashboard.</p>
+        </div>
+        <div class="feature-grid">
+          <a class="feature-tile reveal" href="#activities"><div><h3>[PLACEHOLDER: Sports]</h3><small>Replace with a verified activity</small></div></a>
+          <a class="feature-tile reveal" style="--delay:.1s" href="#activities"><div><h3>[PLACEHOLDER: Clubs and societies]</h3><small>Replace with a verified activity</small></div></a>
+          <a class="feature-tile reveal" style="--delay:.2s" href="#activities"><div><h3>[PLACEHOLDER: Events]</h3><small>Replace with a verified activity</small></div></a>
+        </div>
+        <p class="section-cta reveal"><a class="btn btn-ghost" href="#activities">See all activities</a></p>
+      </div>
+    </section>
+
+    <!-- ===== Gallery preview ===== -->
+    <section class="section" aria-labelledby="gal-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 id="gal-title">From the gallery</h2>
+        </div>
+        <div class="feature-grid">
+          <a class="feature-tile reveal" href="#gallery"><div><h3>[PLACEHOLDER: Photo]</h3><small>images/gallery/</small></div></a>
+          <a class="feature-tile reveal" style="--delay:.1s" href="#gallery"><div><h3>[PLACEHOLDER: Photo]</h3><small>images/gallery/</small></div></a>
+          <a class="feature-tile reveal" style="--delay:.2s" href="#gallery"><div><h3>[PLACEHOLDER: Photo]</h3><small>images/gallery/</small></div></a>
+        </div>
+        <p class="section-cta reveal"><a class="btn btn-primary" href="#gallery">Open the gallery</a></p>
+      </div>
+    </section>
+  
+    </div>
+    <div class="route-page" data-route="about" hidden>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1>About our school</h1>
+        <p class="lead">Our story, our purpose and the people who lead us.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="split reveal">
+          <h2>Our history</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="about.history"><span class="placeholder-note">[PLACEHOLDER: Verified School History]</span></p>
+          </div>
+        </div>
+        <div class="split reveal">
+          <h2>Our vision</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="about.vision"><span class="placeholder-note">[PLACEHOLDER: Verified Vision statement]</span></p>
+          </div>
+        </div>
+        <div class="split reveal">
+          <h2>Our mission</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="about.mission"><span class="placeholder-note">[PLACEHOLDER: Verified Mission statement]</span></p>
+          </div>
+        </div>
+        <div class="split reveal">
+          <h2>Principal's message</h2>
+          <div class="prose">
+            <div class="portrait"><span>[PLACEHOLDER: Principal photo]</span></div>
+            <p class="content-text" data-content-key="about.principal_message"><span class="placeholder-note">[PLACEHOLDER: Verified Principal's message]</span></p>
+          </div>
+        </div>
+        <div class="split reveal">
+          <h2>School identity</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="about.identity"><span class="placeholder-note">[PLACEHOLDER: Verified school motto, crest, colours and song]</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+    <div class="route-page" data-route="academics" hidden>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1>Academics</h1>
+        <p class="lead">What students study, and the programmes that support them.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="split reveal">
+          <h2>Overview</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="academics.intro"><span class="placeholder-note">[PLACEHOLDER: Verified academic overview]</span></p>
+          </div>
+        </div>
+        <div class="split reveal">
+          <h2>Academic sections</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="academics.sections"><span class="placeholder-note">[PLACEHOLDER: Verified list of academic sections / grade levels]</span></p>
+          </div>
+        </div>
+        <div class="split reveal">
+          <h2>Subjects</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="academics.subjects"><span class="placeholder-note">[PLACEHOLDER: Verified subjects offered]</span></p>
+          </div>
+        </div>
+        <div class="split reveal">
+          <h2>Educational programmes</h2>
+          <div class="prose">
+            <p class="content-text" data-content-key="academics.programs"><span class="placeholder-note">[PLACEHOLDER: Verified educational programmes]</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+    <div class="route-page" data-route="activities" hidden>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1>Activities</h1>
+        <p class="lead">Sports, clubs, societies, events and more beyond the classroom.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div id="activities-list">
+          <section class="group-block">
+            <h2>Sports</h2>
+            <div class="activity-grid">
+              <article class="activity-item"><h3>[PLACEHOLDER: Sports activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
+            </div>
+          </section>
+          <section class="group-block">
+            <h2>Clubs</h2>
+            <div class="activity-grid">
+              <article class="activity-item"><h3>[PLACEHOLDER: Clubs activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
+            </div>
+          </section>
+          <section class="group-block">
+            <h2>Societies</h2>
+            <div class="activity-grid">
+              <article class="activity-item"><h3>[PLACEHOLDER: Societies activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
+            </div>
+          </section>
+          <section class="group-block">
+            <h2>Events</h2>
+            <div class="activity-grid">
+              <article class="activity-item"><h3>[PLACEHOLDER: Events activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
+            </div>
+          </section>
+          <section class="group-block">
+            <h2>Extra-curricular</h2>
+            <div class="activity-grid">
+              <article class="activity-item"><h3>[PLACEHOLDER: Extra-curricular activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+    <div class="route-page" data-route="gallery" hidden>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1>Gallery</h1>
+        <p class="lead">Photos and approved videos from school life.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar" id="gallery-filters" role="group" aria-label="Filter by category"></div>
+        <div class="gallery-grid" id="gallery-grid" aria-live="polite">
+          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Gallery photo]</span></div>
+          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Gallery photo]</span></div>
+          <div class="gallery-tile is-placeholder"><span class="placeholder-note">[PLACEHOLDER: Approved video]</span></div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Gallery viewer">
+      <button class="btn btn-ghost lightbox-close" type="button">Close</button>
+      <div class="lightbox-body"></div>
+    </dialog>
+
+  
+    </div>
+    <div class="route-page" data-route="contact" hidden>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1>Contact us</h1>
+        <p class="lead">How to find and reach the school.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container contact-layout">
+        <dl class="detail-list reveal">
+          <div><dt>Address</dt><dd class="content-text" data-content-key="contact.address"><span class="placeholder-note">[PLACEHOLDER: Verified address]</span></dd></div>
+          <div><dt>Phone</dt><dd><span class="placeholder-note" data-fallback>[PLACEHOLDER: Verified phone numbers]</span><a hidden data-content-key="contact.phone" data-content-attr="href" data-prefix="tel:"></a></dd></div>
+          <div><dt>Email</dt><dd><span class="placeholder-note" data-fallback>[PLACEHOLDER: Verified email]</span><a hidden data-content-key="contact.email" data-content-attr="href" data-prefix="mailto:"></a></dd></div>
+          <div><dt>Social</dt><dd><span class="placeholder-note" data-fallback>[PLACEHOLDER: Verified social media link]</span><a hidden data-content-key="contact.facebook" data-content-attr="href" rel="noopener noreferrer" target="_blank"></a></dd></div>
+        </dl>
+        <div class="map-frame reveal" style="--delay:.1s">
+          <span class="placeholder-note" data-fallback>[PLACEHOLDER: Google Maps embed link, added in the dashboard]</span>
+          <iframe hidden title="Map showing the school location" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-content-key="contact.map_url" data-content-attr="src"></iframe>
+        </div>
+      </div>
+    </section>
+
+  
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h2>D.S. Senanayake Central College</h2>
+          <p>Mirigama</p>
+          <p class="content-text" data-content-key="contact.address"><span class="placeholder-note">[PLACEHOLDER: Verified address]</span></p>
+        </div>
+        <nav aria-label="Footer">
+          <h2>Explore</h2>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#academics">Academics</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li data-content-key="contact.phone"><span class="placeholder-note">[PLACEHOLDER: Verified phone]</span></li>
+            <li data-content-key="contact.email"><span class="placeholder-note">[PLACEHOLDER: Verified email]</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year">2026</span> D.S. Senanayake Central College, Mirigama</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script>
+/*
+ * Public site configuration.
+ * The Supabase URL and ANON key are designed to be public (they are safe in a
+ * static site) ONLY because Row Level Security on the database enforces who can
+ * read and write. NEVER put a service-role key or any password in this file.
+ */
+window.DSCC_CONFIG = {
+  supabaseUrl: "https://syfenaufdocisegocips.supabase.co",
+  supabaseAnonKey: (window.DSCC_CONFIG || {}).supabaseAnonKey || "",
+  statueImage: "images/statue/statue.png",
+  statueFallback: "data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20600%20760%22%20role=%22img%22%20aria-label=%22Statue%20photo%20placeholder%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id=%22g%22%20x1=%220%22%20y1=%220%22%20x2=%220%22%20y2=%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset=%220%22%20stop-color=%22%231c4a3a%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset=%221%22%20stop-color=%22%230b2a20%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20width=%22600%22%20height=%22760%22%20fill=%22url%28%23g%29%22/%3E%0A%20%20%3Cg%20fill=%22%230a1f18%22%20stroke=%22%23e0b53a%22%20stroke-opacity=%22.5%22%20stroke-width=%222%22%3E%0A%20%20%20%20%3Ccircle%20cx=%22300%22%20cy=%22190%22%20r=%2262%22/%3E%0A%20%20%20%20%3Cpath%20d=%22M200%20700%20L215%20330%20Q300%20260%20385%20330%20L400%20700%20Z%22/%3E%0A%20%20%20%20%3Crect%20x=%22160%22%20y=%22700%22%20width=%22280%22%20height=%2240%22%20rx=%224%22/%3E%0A%20%20%3C/g%3E%0A%20%20%3Ctext%20x=%22300%22%20y=%22470%22%20text-anchor=%22middle%22%20fill=%22%23e0b53a%22%20font-family=%22Georgia%2Cserif%22%20font-size=%2222%22%3E%5BPLACEHOLDER%5D%3C/text%3E%0A%20%20%3Ctext%20x=%22300%22%20y=%22502%22%20text-anchor=%22middle%22%20fill=%22%23ffffff%22%20fill-opacity=%22.8%22%20font-family=%22Georgia%2Cserif%22%20font-size=%2216%22%3EAdd%20the%20real%20statue%20photo%20as%3C/text%3E%0A%20%20%3Ctext%20x=%22300%22%20y=%22526%22%20text-anchor=%22middle%22%20fill=%22%23ffffff%22%20fill-opacity=%22.8%22%20font-family=%22Georgia%2Cserif%22%20font-size=%2216%22%3Eimages/statue/statue.png%3C/text%3E%0A%3C/svg%3E"
+};
+
+  </script>
+  <script>
+/* Shared behaviour for all public pages */
+(function () {
+  "use strict";
+
+  var root = document.documentElement;
+  root.classList.add("js");
+
+  /* Trigger the hero load sequence once fonts/layout are ready */
+  function loaded() { root.classList.add("is-loaded"); }
+  if (document.readyState === "complete") loaded();
+  else window.addEventListener("load", loaded);
+  setTimeout(loaded, 1500); // safety net if a resource is slow
+
+  /* Header background after scrolling */
+  var header = document.querySelector(".site-header");
+  function onScroll() {
+    if (header) header.classList.toggle("is-scrolled", window.scrollY > 24);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile navigation */
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("primary-nav");
+  if (toggle && nav) {
+    function setOpen(open) {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      nav.classList.toggle("is-open", open);
+    }
+    toggle.addEventListener("click", function () {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false); toggle.focus();
+      }
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setOpen(false);
+    });
+  }
+
+  /* Scroll reveals */
+  var items = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -6% 0px" });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+  }
+
+  /* Footer year */
+  var yr = document.getElementById("year");
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---------- Latest news from Supabase ---------- */
+  var list = document.getElementById("news-list");
+  var cfg = window.DSCC_CONFIG || {};
+  if (list && cfg.supabaseUrl && cfg.supabaseAnonKey) {
+    var url = cfg.supabaseUrl + "/rest/v1/news?select=id,title,summary,published_at&status=eq.published&order=published_at.desc&limit=3";
+    fetch(url, { headers: { apikey: cfg.supabaseAnonKey, Authorization: "Bearer " + cfg.supabaseAnonKey } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (rows) {
+        list.textContent = "";
+        if (!rows.length) {
+          list.appendChild(make("p", "empty-state", "No published news is available yet."));
+          return;
+        }
+        rows.forEach(function (n) {
+          var art = document.createElement("article");
+          art.className = "news-item";
+          var t = document.createElement("time");
+          t.dateTime = n.published_at || "";
+          t.textContent = n.published_at ? new Date(n.published_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "";
+          var h = document.createElement("h3"); h.textContent = n.title;      // textContent avoids XSS
+          var p = document.createElement("p"); p.textContent = n.summary || "";
+          art.append(t, h, p);
+          list.appendChild(art);
+        });
+      })
+      .catch(function (error) {
+        console.error("Could not load public news from Supabase.", error);
+        list.replaceChildren(make("p", "form-msg error", "News could not be loaded."));
+      });
+  } else if (list) {
+    list.replaceChildren(make("p", "form-msg error", "News is unavailable because Supabase is not configured."));
+  }
+
+  /* ---------- Shared helpers for backend-driven content ---------- */
+  var configured = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
+  function api(path) {
+    return fetch(cfg.supabaseUrl + "/rest/v1/" + path, {
+      headers: { apikey: cfg.supabaseAnonKey, Authorization: "Bearer " + cfg.supabaseAnonKey }
+    }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  function make(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;   // textContent only: never inject HTML from the database
+    return e;
+  }
+  function fmtDate(d) {
+    return d ? new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) : "";
+  }
+
+  /* ---------- Page content (About, Academics, Contact, footer) ----------
+   * Elements with data-content-key get their text from the page_content table.
+   * Links only accept safe schemes (tel:, mailto:, https:). Maps only accept Google Maps embeds. */
+  var cmsEls = document.querySelectorAll("[data-content-key]");
+  if (configured && cmsEls.length) {
+    api("page_content?select=key,value").then(function (rows) {
+      var map = {};
+      rows.forEach(function (r) { map[r.key] = (r.value || "").trim(); });
+      cmsEls.forEach(function (el) {
+        var v = map[el.getAttribute("data-content-key")];
+        if (!v) return;
+        var attr = el.getAttribute("data-content-attr");
+        var fallback = el.previousElementSibling;
+        var hasFallback = fallback && fallback.hasAttribute("data-fallback");
+        if (attr === "src") {
+          if (/^https:\/\/www\.google\.com\/maps\/embed/i.test(v)) {
+            el.src = v; el.hidden = false;
+            if (hasFallback) fallback.hidden = true;
+          }
+        } else if (attr === "href") {
+          var prefix = el.getAttribute("data-prefix") || "";
+          if (/^\[PLACEHOLDER/i.test(v)) return;          // never turn placeholders into links
+          var okLink = prefix ? true : /^https:\/\//i.test(v);
+          if (!okLink) return;
+          // For several phone numbers, the link dials the first one; all are shown as text
+          el.href = prefix + (prefix === "tel:" ? v.split(/[,;\/]/)[0].replace(/[^\d+]/g, "") : v);
+          el.textContent = v; el.hidden = false;
+          if (hasFallback) fallback.hidden = true;
+        } else {
+          el.textContent = v;
+        }
+      });
+    }).catch(function () { /* keep placeholders */ });
+  }
+
+  /* ---------- Activities page ---------- */
+  var actRoot = document.getElementById("activities-list");
+  if (configured && actRoot) {
+    var order = ["Sports", "Clubs", "Societies", "Events", "Extra-curricular"];
+    api("activities?select=id,title,category,description,event_date&status=eq.published&order=event_date.desc.nullslast")
+      .then(function (rows) {
+        var groups = {};
+        rows.forEach(function (r) { (groups[r.category] = groups[r.category] || []).push(r); });
+        var cats = order.filter(function (c) { return groups[c]; })
+          .concat(Object.keys(groups).filter(function (c) { return order.indexOf(c) < 0; }));
+        actRoot.textContent = "";
+        if (!rows.length) {
+          actRoot.appendChild(make("p", "empty-state", "No published activities are available yet."));
+          return;
+        }
+        cats.forEach(function (c) {
+          var block = make("section", "group-block");
+          block.appendChild(make("h2", null, c));
+          var grid = make("div", "activity-grid");
+          groups[c].forEach(function (a) {
+            var item = make("article", "activity-item");
+            if (a.event_date) { var t = make("time", null, fmtDate(a.event_date)); t.dateTime = a.event_date; item.appendChild(t); }
+            item.appendChild(make("h3", null, a.title));
+            if (a.description) item.appendChild(make("p", null, a.description));
+            grid.appendChild(item);
+          });
+          block.appendChild(grid);
+          actRoot.appendChild(block);
+        });
+      }).catch(function (error) {
+        console.error("Could not load public activities from Supabase.", error);
+        actRoot.replaceChildren(make("p", "form-msg error", "Activities could not be loaded."));
+      });
+  } else if (actRoot) {
+    actRoot.replaceChildren(make("p", "form-msg error", "Activities are unavailable because Supabase is not configured."));
+  }
+
+  /* ---------- Gallery page: category filter + lightbox ---------- */
+  var gGrid = document.getElementById("gallery-grid");
+  var gFilters = document.getElementById("gallery-filters");
+  var box = document.getElementById("lightbox");
+  if (gGrid && box) {
+    var boxBody = box.querySelector(".lightbox-body");
+    var lastTrigger = null;
+    box.querySelector(".lightbox-close").addEventListener("click", function () { box.close(); });
+    box.addEventListener("click", function (e) { if (e.target === box) box.close(); });  // click on backdrop
+    box.addEventListener("close", function () { boxBody.textContent = ""; if (lastTrigger) lastTrigger.focus(); });
+
+    function openItem(item, trigger) {
+      lastTrigger = trigger;
+      boxBody.textContent = "";
+      if (item.media_type === "video") {
+        var f = document.createElement("iframe");
+        f.src = item.video_url; f.title = item.caption || "Video";
+        f.allow = "accelerometer; encrypted-media; gyroscope; picture-in-picture"; f.allowFullscreen = true;
+        boxBody.appendChild(f);
+      } else {
+        var im = document.createElement("img");
+        im.src = item.image_url; im.alt = item.caption || "School gallery photo";
+        boxBody.appendChild(im);
+      }
+      if (item.caption) boxBody.appendChild(make("p", "lightbox-caption", item.caption));
+      box.showModal();
+    }
+
+    function safeVideo(u) { return /^https:\/\/(www\.youtube(-nocookie)?\.com\/embed\/|player\.vimeo\.com\/video\/)/i.test(u || ""); }
+    function safeImage(u) { return /^https:\/\//i.test(u || ""); }
+
+    function renderGallery(items, active) {
+      gGrid.textContent = "";
+      var shown = items.filter(function (i) { return active === "All" || i.category === active; });
+      if (!shown.length) { gGrid.appendChild(make("p", "empty-state", "No items in this category yet.")); return; }
+      shown.forEach(function (i) {
+        var tile = make("button", "gallery-tile");
+        tile.type = "button";
+        tile.setAttribute("aria-label", (i.caption || "Gallery item") + (i.media_type === "video" ? " (video)" : ""));
+        if (i.media_type !== "video") {
+          var im = document.createElement("img");
+          im.src = i.image_url; im.alt = ""; im.loading = "lazy";
+          tile.appendChild(im);
+        } else tile.appendChild(make("span", "badge", "Video"));
+        if (i.caption) tile.appendChild(make("span", "cap", i.caption));
+        tile.addEventListener("click", function () { openItem(i, tile); });
+        gGrid.appendChild(tile);
+      });
+    }
+
+    if (configured) {
+      api("gallery_items?select=id,category,caption,media_type,image_url,video_url&order=sort_order.asc,created_at.desc")
+        .then(function (rows) {
+          var items = rows.filter(function (r) { return r.media_type === "video" ? safeVideo(r.video_url) : safeImage(r.image_url); });
+          if (!items.length) {
+            gGrid.replaceChildren(make("p", "empty-state", "No gallery items are available yet."));
+            return;
+          }
+          var cats = ["All"];
+          items.forEach(function (i) { if (i.category && cats.indexOf(i.category) < 0) cats.push(i.category); });
+          var active = "All";
+          if (gFilters) {
+            gFilters.textContent = "";
+            cats.forEach(function (c) {
+              var b = make("button", "filter-btn", c);
+              b.type = "button"; b.setAttribute("aria-pressed", String(c === active));
+              b.addEventListener("click", function () {
+                active = c;
+                gFilters.querySelectorAll(".filter-btn").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+                renderGallery(items, active);
+              });
+              gFilters.appendChild(b);
+            });
+          }
+          renderGallery(items, active);
+        }).catch(function (error) {
+          console.error("Could not load public gallery items from Supabase.", error);
+          gGrid.replaceChildren(make("p", "form-msg error", "Gallery items could not be loaded."));
+        });
+    } else {
+      gGrid.replaceChildren(make("p", "form-msg error", "The gallery is unavailable because Supabase is not configured."));
+    }
+  }
+})();
+
+  </script>
+  <script>
+/*
+ * Hero statue effects (2D only, no rotation, no 3D model):
+ *  - falls back to a placeholder if the real photo is missing
+ *  - subtle pointer-follow tilt + soft parallax
+ *  - minimal golden particles on a canvas
+ * Everything is skipped when the visitor prefers reduced motion.
+ */
+(function () {
+  "use strict";
+
+  var cfg = window.DSCC_CONFIG || {};
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var card = document.querySelector(".statue-card");
+  var img = document.querySelector(".statue-img");
+  if (!card || !img) return;
+
+  /* --- Image fallback --- */
+  function useFallback() {
+    if (cfg.statueFallback && img.getAttribute("src") !== cfg.statueFallback) {
+      img.src = cfg.statueFallback;
+    }
+  }
+  img.addEventListener("error", useFallback);
+  // The error may already have fired before this script ran
+  if (img.complete && img.naturalWidth === 0) useFallback();
+
+  /* --- Pointer-follow tilt (max about 5 degrees) --- */
+  if (!reduce && window.matchMedia("(hover: hover)").matches) {
+    var stage = card.parentElement;
+    var raf = null, tx = 0, ty = 0, cx = 0, cy = 0;
+    var MAX_TILT = 5, MAX_SHIFT = 14;
+
+    // Wait until the intro reveal has finished so the two transforms don't fight
+    setTimeout(function () { card.classList.add("is-interactive"); }, 1900);
+
+    stage.addEventListener("pointermove", function (e) {
+      var r = stage.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width - 0.5) * 2;   // -1..1
+      ty = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (!raf) raf = requestAnimationFrame(frame);
+    });
+    stage.addEventListener("pointerleave", function () {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(frame);
+    });
+
+    function frame() {
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      card.style.transform =
+        "rotateY(" + (cx * MAX_TILT).toFixed(2) + "deg) rotateX(" + (-cy * MAX_TILT).toFixed(2) + "deg)";
+      img.style.transform =
+        "translate(" + (-cx * MAX_SHIFT).toFixed(1) + "px," + (-cy * MAX_SHIFT).toFixed(1) + "px) scale(1.03)";
+      if (Math.abs(tx - cx) > 0.002 || Math.abs(ty - cy) > 0.002) {
+        raf = requestAnimationFrame(frame);
+      } else {
+        raf = null;
+      }
+    }
+  }
+
+  /* --- Golden particles --- */
+  var canvas = document.getElementById("particles");
+  if (!canvas || reduce) return;
+  var ctx = canvas.getContext("2d");
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var w = 0, h = 0, parts = [], running = true;
+
+  function resize() {
+    var r = canvas.getBoundingClientRect();
+    w = r.width; h = r.height;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var count = w < 720 ? 14 : 26;                 // keep it minimal
+    parts = [];
+    for (var i = 0; i < count; i++) parts.push(make(true));
+  }
+  function make(anywhere) {
+    return {
+      x: Math.random() * w,
+      y: anywhere ? Math.random() * h : h + 10,
+      r: Math.random() * 1.6 + 0.5,
+      v: Math.random() * 0.25 + 0.08,
+      drift: (Math.random() - 0.5) * 0.15,
+      a: Math.random() * 0.5 + 0.2,
+      p: Math.random() * Math.PI * 2
+    };
+  }
+  function tick() {
+    if (!running) return;
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      p.y -= p.v; p.x += p.drift; p.p += 0.02;
+      if (p.y < -10) parts[i] = make(false);
+      var alpha = p.a * (0.6 + 0.4 * Math.sin(p.p));
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(241, 210, 122, " + alpha.toFixed(3) + ")";
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Pause when the hero is off-screen or the tab is hidden (saves battery)
+  var hero = document.querySelector(".hero");
+  if ("IntersectionObserver" in window && hero) {
+    new IntersectionObserver(function (entries) {
+      var visible = entries[0].isIntersecting;
+      if (visible && !running) { running = true; requestAnimationFrame(tick); }
+      if (!visible) running = false;
+    }).observe(hero);
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) running = false;
+    else if (!running) { running = true; requestAnimationFrame(tick); }
+  });
+
+  window.addEventListener("resize", resize);
+  resize();
+  requestAnimationFrame(tick);
+})();
+
+  </script>
+  <script>
+
+(function () {
+  "use strict";
+  var routes = ["home", "about", "academics", "activities", "gallery", "contact"];
+  var titles = { home: "D.S. Senanayake Central College, Mirigama", about: "About us", academics: "Academics",
+                 activities: "Activities", gallery: "Gallery", contact: "Contact us" };
+  var pages = document.querySelectorAll(".route-page");
+  var navLinks = document.querySelectorAll(".nav-list a");
+  var current = null;
+
+  function show(route, isFirst) {
+    if (route === current) return;
+    current = route;
+    pages.forEach(function (p) { p.hidden = p.getAttribute("data-route") !== route; });
+    navLinks.forEach(function (a) {
+      if (a.getAttribute("href") === "#" + route) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    document.body.setAttribute("data-page", route);
+    document.title = route === "home" ? titles.home : titles[route] + " | D.S. Senanayake Central College, Mirigama";
+    if (!isFirst) {
+      window.scrollTo(0, 0);
+      var h1 = document.querySelector('.route-page[data-route="' + route + '"] h1');
+      if (h1) { h1.setAttribute("tabindex", "-1"); h1.focus({ preventScroll: true }); }
+    }
+    window.dispatchEvent(new Event("resize"));   // lets the hero particles re-measure after the home page is shown
+  }
+
+  function fromHash() {
+    var id = decodeURIComponent((location.hash || "").slice(1));
+    if (routes.indexOf(id) >= 0) { show(id, false); return; }
+    if (!id) { show("home", false); return; }
+    // any other hash (e.g. #introduction, #main) is a normal in-page anchor: leave the page as it is
+  }
+  window.addEventListener("hashchange", fromHash);
+  var start = decodeURIComponent((location.hash || "").slice(1));
+  show(routes.indexOf(start) >= 0 ? start : "home", true);
+})();
+
+  </script>
+</body>
+</html>

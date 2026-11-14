@@ -70,7 +70,7 @@
               <li><a href="academics.html#performance">Student Performance</a></li>
             </ul>
           </details></li>
-          <li><a href="contact.html#contact">Admissions</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
           <li><a href="activities.html#sports" aria-current="page">Sports</a></li>
           <li><a href="activities.html#clubs">Clubs &amp; Societies</a></li>
           <li><a href="activities.html#achievements">Achievements</a></li>
@@ -92,42 +92,7 @@
     <section class="section">
       <div class="container">
         <div id="activities-list">
-          <section class="group-block" id="sports">
-            <h2>Sports</h2>
-            <div class="activity-grid">
-              <article class="activity-item"><h3>[PLACEHOLDER: Sports activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
-            </div>
-          </section>
-          <section class="group-block" id="clubs">
-            <h2>Clubs</h2>
-            <div class="activity-grid">
-              <article class="activity-item"><h3>[PLACEHOLDER: Clubs activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
-            </div>
-          </section>
-          <section class="group-block" id="societies">
-            <h2>Societies</h2>
-            <div class="activity-grid">
-              <article class="activity-item"><h3>[PLACEHOLDER: Societies activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
-            </div>
-          </section>
-          <section class="group-block" id="achievements">
-            <h2>Achievements</h2>
-            <div class="activity-grid">
-              <article class="activity-item"><h3>[PLACEHOLDER: School achievement]</h3><p>[PLACEHOLDER: Verified achievements published from the admin dashboard appear here.]</p></article>
-            </div>
-          </section>
-          <section class="group-block">
-            <h2>Events</h2>
-            <div class="activity-grid">
-              <article class="activity-item"><h3>[PLACEHOLDER: Events activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
-            </div>
-          </section>
-          <section class="group-block" id="cadets">
-            <h2>Extra-curricular</h2>
-            <div class="activity-grid">
-              <article class="activity-item"><h3>[PLACEHOLDER: Extra-curricular activity]</h3><p>[PLACEHOLDER: Verified description. Published activities from the admin dashboard appear here.]</p></article>
-            </div>
-          </section>
+          <p class="empty-state">Loading activities…</p>
         </div>
       </div>
     </section>
@@ -147,7 +112,7 @@
           <ul>
             <li><a href="about.html#identity">School Profile</a></li>
             <li><a href="about.html#principal-message">Principal's Message</a></li>
-            <li><a href="contact.html#contact">Admissions</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
             <li><a href="academics.html#performance">Student Performance</a></li>
             <li><a href="academics.html">Academics</a></li>
             <li><a href="activities.html">Achievements</a></li>
@@ -178,9 +143,11 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="js/config.js" defer></script>
+  <script src="js/supabase-config.js" defer></script>
   <script src="js/animations.min.js" defer></script>
-  <script src="js/main.min.js" defer></script>
+  <script src="js/main.js" defer></script>
   <script src="js/search.js" defer></script>
 </body>
 </html>
