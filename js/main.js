@@ -70,25 +70,18 @@
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---------- Latest news (from Supabase or Admin LocalStorage) ---------- */
+  /* ---------- Latest news from Supabase ---------- */
   var list = document.getElementById("news-list");
-  var cfg = window.DSCC_CONFIG || {};
-  function readCachedArray(key) {
-    try {
-      var value = localStorage.getItem("dscc_" + key);
-      if (!value) return [];
-      var rows = JSON.parse(value);
-      if (!Array.isArray(rows)) throw new TypeError("Expected an array.");
-      return rows;
-    } catch (error) {
-      console.error("Could not read cached " + key + " data.", error);
-      return [];
-    }
-  }
+  var supabaseContent = window.DSCCSupabase;
+  var client = supabaseContent && supabaseContent.client;
 
   function renderNewsItems(rows) {
-    if (!list || !rows || !rows.length) return;
+    if (!list) return;
     list.textContent = "";
+    if (!rows || !rows.length) {
+      list.appendChild(make("p", "empty-state", "No published news is available yet."));
+      return;
+    }
     rows.slice(0, 3).forEach(function (n) {
       var art = document.createElement("article");
       art.className = "news-item reveal is-visible";
@@ -105,19 +98,17 @@
     });
   }
 
-  // 1. Try local storage from Admin Panel
-  var publishedNews = readCachedArray("news").filter(function (x) { return x.status === "published"; });
-  if (publishedNews.length) renderNewsItems(publishedNews);
-
-  // 2. If Supabase configured, query Supabase
-  if (list && cfg.supabaseUrl && cfg.supabaseAnonKey) {
-    var url = cfg.supabaseUrl + "/rest/v1/news?select=id,title,summary,published_at&status=eq.published&order=published_at.desc&limit=3";
-    fetch(url, { headers: { apikey: cfg.supabaseAnonKey, Authorization: "Bearer " + cfg.supabaseAnonKey } })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (rows) {
-        if (rows.length) renderNewsItems(rows);
-      })
-      .catch(function (error) { console.error("Could not load public news from Supabase.", error); });
+  if (list) {
+    if (client) {
+      supabaseContent.publicContent.news()
+        .then(renderNewsItems)
+        .catch(function (error) {
+          console.error("Could not load public news from Supabase.", error);
+          list.replaceChildren(make("p", "form-msg error", "News could not be loaded. Please try again later."));
+        });
+    } else {
+      list.replaceChildren(make("p", "form-msg error", "News is unavailable because Supabase is not configured."));
+    }
   }
 
   /* ---------- Urgent Announcement Banner ---------- */
@@ -127,13 +118,6 @@
   var bannerClose = document.getElementById("notice-close");
 
   if (banner) {
-    var activeAnn = readCachedArray("announcements").find(function (a) { return a.status === "active"; });
-    if (activeAnn && !sessionStorage.getItem("dscc_banner_dismissed")) {
-      if (bannerText) bannerText.textContent = activeAnn.title + " — " + (activeAnn.body || "");
-      if (bannerTag) bannerTag.textContent = activeAnn.priority || "Notice";
-      banner.classList.add("is-active");
-    }
-
     if (bannerClose) {
       bannerClose.addEventListener("click", function () {
         banner.classList.remove("is-active");
@@ -143,12 +127,7 @@
   }
 
   /* ---------- Shared helpers for backend-driven content ---------- */
-  var configured = !!(cfg.supabaseUrl && cfg.supabaseAnonKey);
-  function api(path) {
-    return fetch(cfg.supabaseUrl + "/rest/v1/" + path, {
-      headers: { apikey: cfg.supabaseAnonKey, Authorization: "Bearer " + cfg.supabaseAnonKey }
-    }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
-  }
+  var configured = !!client;
   function make(tag, cls, text) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -160,9 +139,9 @@
   }
 
   if (configured && banner) {
-    api("announcements?select=title,body,priority,status&status=eq.active&order=updated_at.desc&limit=1")
+    supabaseContent.publicContent.announcements()
       .then(function (rows) {
-        var active = rows.find(function (item) { return item.status === "active"; });
+        var active = rows[0];
         if (!active || sessionStorage.getItem("dscc_banner_dismissed")) return;
         if (bannerText) bannerText.textContent = active.title + " — " + (active.body || "");
         if (bannerTag) bannerTag.textContent = active.priority || "Notice";
@@ -175,15 +154,9 @@
    * Elements with data-content-key get their text from the page_content table.
    * Links only accept safe schemes (tel:, mailto:, https:). Maps only accept Google Maps embeds. */
   var cmsEls = document.querySelectorAll("[data-content-key]");
-  var localCms = {};
-  readCachedArray("page_content").forEach(function (row) {
-    if (row && typeof row.key === "string" && typeof row.value === "string") localCms[row.key] = row.value.trim();
-  });
-
-  function applyCmsMap(map, protectedKeys) {
+  function applyCmsMap(map) {
     cmsEls.forEach(function (el) {
       var key = el.getAttribute("data-content-key");
-      if (protectedKeys && Object.prototype.hasOwnProperty.call(protectedKeys, key)) return;
       var v = map[key];
       if (!v) return;
       var attr = el.getAttribute("data-content-attr");
@@ -209,12 +182,11 @@
   }
 
   if (cmsEls.length) {
-    applyCmsMap(localCms);
     if (configured) {
-      api("page_content?select=key,value").then(function (rows) {
+      supabaseContent.publicContent.pageContent().then(function (rows) {
         var map = {};
         rows.forEach(function (r) { map[r.key] = (r.value || "").trim(); });
-        applyCmsMap(map, localCms);
+        applyCmsMap(map);
       }).catch(function (error) { console.error("Could not load page content from Supabase.", error); });
     }
   }
@@ -280,11 +252,54 @@
       academicResources.hidden = !hasResources;
     }
 
-    renderAcademicResources(readCachedArray("academic_resources"));
     if (configured) {
-      api("academic_resources?select=section,resource_type,title,file_url,status&status=eq.published&order=created_at.desc")
+      supabaseContent.publicContent.academicResources()
         .then(renderAcademicResources)
         .catch(function (error) { console.error("Could not load academic resources from Supabase.", error); });
+    }
+  }
+
+  /* ---------- Admissions page ---------- */
+  var admissionsRoot = document.getElementById("admissions-list");
+  if (admissionsRoot) {
+    function renderAdmissions(rows) {
+      admissionsRoot.textContent = "";
+      if (!rows || !rows.length) {
+        admissionsRoot.appendChild(make("p", "empty-state", "No admissions updates are available yet."));
+        return;
+      }
+      rows.forEach(function (row) {
+        var article = make("article", "activity-item admissions-item");
+        article.appendChild(make("h2", null, row.title || "Admissions update"));
+        if (row.target_grade) article.appendChild(make("p", "admissions-grade", row.target_grade));
+        if (row.content) article.appendChild(make("p", null, row.content));
+        if (row.image_url) {
+          try {
+            var imageUrl = new URL(row.image_url);
+            if (imageUrl.protocol === "https:") {
+              var image = document.createElement("img");
+              image.src = imageUrl.href;
+              image.alt = row.title || "Admissions information";
+              image.loading = "lazy";
+              article.appendChild(image);
+            }
+          } catch (error) {
+            console.error("Ignoring an admissions image with an invalid URL.", error);
+          }
+        }
+        admissionsRoot.appendChild(article);
+      });
+    }
+
+    if (configured) {
+      supabaseContent.publicContent.admissions()
+        .then(renderAdmissions)
+        .catch(function (error) {
+          console.error("Could not load admissions updates from Supabase.", error);
+          admissionsRoot.replaceChildren(make("p", "form-msg error", "Admissions updates could not be loaded."));
+        });
+    } else {
+      admissionsRoot.replaceChildren(make("p", "form-msg error", "Admissions updates are unavailable because Supabase is not configured."));
     }
   }
 
@@ -292,9 +307,17 @@
   var actRoot = document.getElementById("activities-list");
   if (actRoot) {
     var order = ["Sports", "Clubs", "Societies", "Achievements", "Events", "Extra-curricular"];
-    var activityIds = { Sports: "sports", Clubs: "clubs", Societies: "societies", Achievements: "achievements", "Extra-curricular": "cadets" };
+    var activityIds = { Sports: "sports", Clubs: "clubs", Societies: "societies", Achievements: "achievements", Events: "events", "Extra-curricular": "cadets" };
     function renderActivitiesList(rows) {
-      if (!rows || !rows.length) return;
+      if (!rows || !rows.length) {
+        actRoot.replaceChildren(make("p", "empty-state", "No published activities are available yet."));
+        Object.keys(activityIds).forEach(function (category) {
+          var anchor = make("span", "activity-anchor");
+          anchor.id = activityIds[category];
+          actRoot.appendChild(anchor);
+        });
+        return;
+      }
       var groups = {};
       rows.forEach(function (r) { (groups[r.category] = groups[r.category] || []).push(r); });
       var cats = order.filter(function (c) { return groups[c]; })
@@ -324,14 +347,15 @@
       });
     }
 
-    var pubActs = readCachedArray("activities").filter(function (x) { return x.status === "published"; });
-    if (pubActs.length) renderActivitiesList(pubActs);
-
     if (configured) {
-      api("activities?select=id,title,category,description,event_date&status=eq.published&order=event_date.desc.nullslast")
-        .then(function (rows) {
-          if (rows.length) renderActivitiesList(rows);
-        }).catch(function (error) { console.error("Could not load public activities from Supabase.", error); });
+      supabaseContent.publicContent.activities()
+        .then(renderActivitiesList)
+        .catch(function (error) {
+          console.error("Could not load public activities from Supabase.", error);
+          actRoot.replaceChildren(make("p", "form-msg error", "Activities could not be loaded."));
+        });
+    } else {
+      actRoot.replaceChildren(make("p", "form-msg error", "Activities are unavailable because Supabase is not configured."));
     }
   }
 
@@ -386,7 +410,11 @@
     }
 
     function setupGalleryData(items) {
-      if (!items || !items.length) return;
+      if (!items || !items.length) {
+        gGrid.replaceChildren(make("p", "empty-state", "No gallery items are available yet."));
+        if (gFilters) gFilters.textContent = "";
+        return;
+      }
       var cats = ["All"];
       items.forEach(function (i) { if (i.category && cats.indexOf(i.category) < 0) cats.push(i.category); });
       var active = "All";
@@ -406,16 +434,17 @@
       renderGallery(items, active);
     }
 
-    // Try LocalStorage first
-    var parsedGal = readCachedArray("gallery");
-    if (parsedGal.length) setupGalleryData(parsedGal);
-
     if (configured) {
-      api("gallery_items?select=id,category,caption,media_type,image_url,video_url&order=sort_order.asc,created_at.desc")
+      supabaseContent.publicContent.gallery()
         .then(function (rows) {
           var items = rows.filter(function (r) { return r.media_type === "video" ? safeVideo(r.video_url) : safeImage(r.image_url); });
-          if (items.length) setupGalleryData(items);
-        }).catch(function (error) { console.error("Could not load gallery items from Supabase.", error); });
+          setupGalleryData(items);
+        }).catch(function (error) {
+          console.error("Could not load gallery items from Supabase.", error);
+          gGrid.replaceChildren(make("p", "form-msg error", "Gallery items could not be loaded."));
+        });
+    } else {
+      gGrid.replaceChildren(make("p", "form-msg error", "The gallery is unavailable because Supabase is not configured."));
     }
   }
 

@@ -133,16 +133,7 @@
   }
 
   function readStoredArray(key) {
-    try {
-      var value = localStorage.getItem("dscc_" + key);
-      if (!value) return [];
-      var rows = JSON.parse(value);
-      if (!Array.isArray(rows)) throw new TypeError("Expected an array.");
-      return rows;
-    } catch (error) {
-      console.error("Could not read cached search " + key + " data.", error);
-      return [];
-    }
+    return [];
   }
 
   function indexPageContent() {
@@ -230,6 +221,57 @@
     });
   }
 
+  var liveContentIndex;
+  function indexLiveContent() {
+    if (liveContentIndex) return liveContentIndex;
+    var supabaseContent = window.DSCCSupabase;
+    if (!supabaseContent || !supabaseContent.client) return Promise.resolve();
+
+    liveContentIndex = Promise.all([
+      supabaseContent.client.from("news").select("title,summary,body").eq("status", "published"),
+      supabaseContent.client.from("announcements").select("title,body").eq("status", "active"),
+      supabaseContent.publicContent.activities(),
+      supabaseContent.publicContent.pageContent(),
+      supabaseContent.publicContent.admissions()
+    ]).then(function (results) {
+      results.forEach(function (result) {
+        if (result && result.error) throw result.error;
+      });
+      var news = results[0].data || [];
+      var announcements = results[1].data || [];
+      var activities = results[2] || [];
+      var pageContent = results[3] || [];
+      var admissions = results[4] || [];
+
+      news.forEach(function (item) {
+        addEntry({ category: "News", title: item.title, description: item.summary || item.body || "Read the latest college news.", url: "index.html#news-section" });
+      });
+      announcements.forEach(function (item) {
+        addEntry({ category: "Notices", title: item.title, description: item.body || "Read this school announcement.", url: "index.html#site-notice-banner" });
+      });
+      activities.forEach(function (item) {
+        var activityIds = { Sports: "sports", Clubs: "clubs", Societies: "societies", Achievements: "achievements", Events: "events", "Extra-curricular": "cadets" };
+        addEntry({ category: item.category || "Activities", title: item.title, description: item.description || "Explore college activities.", url: "activities.html#" + (activityIds[item.category] || "activities-list") });
+      });
+      pageContent.forEach(function (item) {
+        if (!item || typeof item.key !== "string" || typeof item.value !== "string" || !item.value.trim()) return;
+        var match = item.key.match(/^(about|academics)\.(.+)$/);
+        if (!match) return;
+        var page = match[1] === "about" ? "about.html" : "academics.html";
+        var section = match[2].replace(/_/g, "-");
+        if (section === "intro") section = "";
+        addEntry({ category: match[1] === "about" ? "About" : "Academics", title: section ? section.replace(/-/g, " ") : "Academic overview", description: item.value.trim().slice(0, 180), url: page + (section ? "#" + section : "") });
+      });
+      admissions.forEach(function (item) {
+        addEntry({ category: "Admissions", title: item.title, description: item.content || item.target_grade || "Current admissions update.", url: "admissions.html#admissions-list" });
+      });
+      if (dialog.open) renderResults();
+    }).catch(function (error) {
+      console.error("Could not load live search content from Supabase.", error);
+    });
+    return liveContentIndex;
+  }
+
   function indexNavigation() {
     navList.querySelectorAll("a[href]").forEach(function (link) {
       var url;
@@ -307,6 +349,7 @@
   indexPageContent();
   indexStoredContent();
   indexNotice();
+  indexLiveContent();
   renderResults();
 
   var lastFocusedElement = null;
